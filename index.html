@@ -467,6 +467,52 @@
                 0 0 35px rgba(0, 255, 255, 0.4);
             filter: brightness(1.1) contrast(1.1);
         }
+
+        /* --- CENTER IMAGE: Visual Semiotic 1 --- */
+        .center-image-container {
+            grid-column: 1 / -1;
+            display: flex;
+            justify-content: center;
+            margin: 30px 0;
+            padding: 20px;
+        }
+        .center-image-wrapper {
+            position: relative;
+            width: 70%;
+            max-width: 600px;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 2px solid transparent;
+            background: linear-gradient(45deg, purple, blue, aqua, blue, purple);
+            background-size: 300% 300%;
+            animation: glowingBorder 3s ease-in-out infinite alternate;
+            padding: 4px;
+            box-shadow: 0 0 20px rgba(207, 64, 255, 0.5);
+        }
+        @keyframes glowingBorder {
+            0% {
+                background-position: 0% 50%;
+                box-shadow: 0 0 15px rgba(128, 0, 128, 0.6),
+                           0 0 25px rgba(0, 0, 255, 0.5),
+                           0 0 35px rgba(0, 255, 255, 0.4);
+            }
+            100% {
+                background-position: 100% 50%;
+                box-shadow: 0 0 25px rgba(128, 0, 128, 0.8),
+                           0 0 35px rgba(0, 0, 255, 0.7),
+                           0 0 45px rgba(0, 255, 255, 0.6);
+            }
+        }
+        .center-image-wrapper img {
+            width: 100%;
+            border-radius: 8px;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+        .center-image-wrapper img:hover {
+            transform: scale(1.03);
+        }
+
         .citation {
             background: rgba(0, 255, 255, 0.15);
             color: var(--turquoise);
@@ -612,6 +658,13 @@
             .articles-container {
                 grid-template-columns: 1fr;
             }
+            .center-image-container {
+                padding: 15px;
+                width: 100%;
+            }
+            .center-image-wrapper {
+                width: 85%;
+            }
         }
         @media (max-width: 900px) {
             body {
@@ -641,6 +694,9 @@
             }
             .video-container {
                 width: 85%;
+            }
+            .center-image-wrapper {
+                width: 90%;
             }
             .counter-wrapper {
                 font-size: 2rem;
@@ -689,7 +745,6 @@
         <div class="videos-container">
           <div class="video-container">
             <div class="video-wrapper">
-              <!-- Replaced broken video with African Diaspora Semiotics -->
               <iframe class="video-player" src="https://www.youtube.com/embed/RYL8mfXDcnM" title="African Diaspora Semiotics" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
           </div>
@@ -702,7 +757,7 @@
         
         <div class="contact-card">
           <h2><i class="fas fa-envelope"></i> Contact Information</h2>
-          <p>For more information about visual semiotics and academic literacy, contact:</p>
+          <p>For more information about this research project, please contact:</p>
           <p>Dr Oscar Eybers · <a href="mailto:oscar.eybers@up.ac.za">oscar.eybers@up.ac.za</a></p>
         </div>
         
@@ -736,7 +791,14 @@
             </div>
             <a href="#" class="article-link">Read Full Article</a>
           </div>
-          
+
+          <!-- Center Image -->
+          <div class="center-image-container">
+            <div class="center-image-wrapper">
+              <img src="https://raw.githubusercontent.com/oeybers-cpu/visual_semiotics/main/visual%20semiotic%201.png" alt="Visual Semiotic Framework">
+            </div>
+          </div>
+
           <div class="article-card">
             <h3><i class="fas fa-monument"></i> Architectural Semiotics</h3>
             <div class="article-content">

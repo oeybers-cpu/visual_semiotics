@@ -80,7 +80,7 @@
             color: var(--royal-blue);
             width: 50px;
             height: 50px;
-            borderRadius: 50%;
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -345,7 +345,6 @@
             transform: scaleX(0);
             transform-origin: left;
             transition: transform 0.5s ease;
-            text-decoration: none;
         }
         .article-card:hover {
             transform: translateY(-5px);
@@ -574,7 +573,6 @@
             background: #000;
             border: 1px solid rgba(207, 64, 255, 0.2);
         }
-
         .card-video {
             position: absolute;
             top: 0;
@@ -588,8 +586,6 @@
                 padding-bottom: 60%;
             }
         }
-
-        /* Counter Styles */
         .counter-section {
             text-align: center;
             padding: 1.5rem;
@@ -624,16 +620,12 @@
             font-size: 0.9rem;
         }
         @media (max-width: 600px) {
-            .card-video-container {
-                padding-bottom: 60%;
-            }
             .counter-wrapper {
-                font-size: 2.5rem !important;
+                font-size: 2.5rem;
                 min-width: 250px;
                 padding: 0.4rem 1rem;
             }
         }
-
         @media (max-width: 1100px) {
             .articles-container {
                 grid-template-columns: 1fr;
@@ -675,7 +667,7 @@
                 width: 85%;
             }
             .counter-wrapper {
-                font-size: 2rem !important;
+                font-size: 2rem;
                 min-width: 200px;
                 padding: 0.3rem 0.8rem;
             }
@@ -726,7 +718,7 @@
         <div class="contact-card">
           <h2><i class="fas fa-envelope"></i> Contact Information</h2>
           <p>For more information about this research project, please contact:</p>
-          <p>Dr. Amina Diallo · <a href="mailto:a.diallo@university.edu">a.diallo@university.edu</a></p>
+          <p>Dr Oscar Eybers · <a href="mailto:oscar.eybers@up.ac.za">oscar.eybers@up.ac.za</a></p>
         </div>
         
         <div class="articles-container">
@@ -735,7 +727,7 @@
             <div class="article-content">
               <p>African textiles are rich with symbolic meaning, communicating cultural values, social status, and historical narratives through patterns, colors, and weaving techniques.</p>
               <div class="image-container">
-                <img src="https://via.placeholder.com/300x150" alt="Textile Patterns">
+                <img src="https://raw.githubusercontent.com/oeybers-cpu/visual_semiotics/main/Gemini_Generated_Image_bknv1lbknv1lbknv.png" alt="Textile Patterns">
               </div>
               <div class="article-meta">
                 <span class="meta-tag">Textiles</span>
@@ -750,7 +742,7 @@
             <div class="article-content">
               <p>Masks in African cultures serve as powerful semiotic devices, representing spiritual entities, ancestral connections, and social roles in ceremonial contexts.</p>
               <div class="image-container">
-                <img src="https://via.placeholder.com/300x150" alt="Ritual Mask">
+                <img src="https://raw.githubusercontent.com/oeybers-cpu/visual_semiotics/main/Gemini_Generated_Image_fegkkxfegkkxfegk.png" alt="Ritual Mask">
               </div>
               <div class="article-meta">
                 <span class="meta-tag">Sculpture</span>
@@ -765,7 +757,7 @@
             <div class="article-content">
               <p>The design and organization of space in traditional African architecture communicates cosmological principles, social structures, and environmental relationships.</p>
               <div class="image-container">
-                <img src="https://via.placeholder.com/300x150" alt="Traditional Architecture">
+                <img src="https://raw.githubusercontent.com/oeybers-cpu/visual_semiotics/main/Gemini_Generated_Image_s9ibo5s9ibo5s9ib.png" alt="Traditional Architecture">
               </div>
               <div class="article-meta">
                 <span class="meta-tag">Architecture</span>
@@ -780,7 +772,7 @@
             <div class="article-content">
               <p>Contemporary African artists are reinterpreting traditional visual languages through digital media, creating new semiotic systems that bridge heritage and innovation.</p>
               <div class="image-container">
-                <img src="https://via.placeholder.com/300x150" alt="Digital Art">
+                <img src="https://raw.githubusercontent.com/oeybers-cpu/visual_semiotics/main/Gemini_Generated_Image_vhcfarvhcfarvhcf.png" alt="Digital Art">
               </div>
               <div class="article-meta">
                 <span class="meta-tag">Digital Art</span>
@@ -806,14 +798,13 @@
     </div>
     
     <script>
-      // Simple counter animation
       document.addEventListener('DOMContentLoaded', function() {
         const counter = document.querySelector('.counter-wrapper');
         let target = parseInt(counter.textContent.replace(/,/g, ''));
         let current = 0;
-        let duration = 2000; // ms
-        let increment = target / (duration / 16); // 60fps
-        
+        let duration = 2000;
+        let increment = target / (duration / 16);
+
         function updateCounter() {
           current += increment;
           if (current < target) {
@@ -823,8 +814,7 @@
             counter.textContent = target.toLocaleString();
           }
         }
-        
-        // Start counter when it's in viewport
+
         const observer = new IntersectionObserver((entries) => {
           entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -833,7 +823,7 @@
             }
           });
         }, { threshold: 0.5 });
-        
+
         observer.observe(counter);
       });
     </script>

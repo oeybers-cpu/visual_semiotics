@@ -324,7 +324,6 @@
             transform: scaleX(0);
             transform-origin: left;
             transition: transform 0.5s ease;
-            text-decoration: none;
         }
         .article-card:hover {
             transform: translateY(-5px);
@@ -462,7 +461,7 @@
 </head>
 <body>
     <div class="grid-lines"></div>
-    
+
     <div class="sidebar">
         <div class="sidebar-links">
             <a href="#" class="sidebar-link"><i class="fas fa-file-alt"></i> Research Artifacts</a>
@@ -493,7 +492,7 @@
                     <div class="article-content">
                         <p>This article examines the rich, symbolic language of West African kente cloth and Adinkra symbols. It explores how specific colors and geometric patterns convey proverbs, historical narratives, and social values, acting as a form of non-verbal communication within communities.</p>
                         <div class="image-container">
-                            <img src="https://via.placeholder.com/200x120/800080/FFFFFF?text=Kente+Cloth+Pattern" alt="Kente cloth detail">
+                            <img src="https://github.com/oeybers-cpu/visual_semiotics/blob/main/1756783844.png?raw=true" alt="Kente cloth detail">
                         </div>
                     </div>
                     <div class="card-footer">
@@ -506,7 +505,7 @@
                     <div class="article-content">
                         <p>Exploring the semiotics of ritual masks, this research analyzes the Djembe masks of the Dan people. It focuses on how form, material, and performance combine to embody ancestral spirits, spiritual forces, or community ideals, making them central to cultural identity and social cohesion.</p>
                         <div class="image-container">
-                            <img src="https://via.placeholder.com/200x120/4B0082/FFFFFF?text=African+Ritual+Mask" alt="Djembe mask detail">
+                            <img src="https://th.bing.com/th/id/R.a744274293d5e697531f6ac1e8b94e59?rik=T%2boKa1FZK%2flyVA&pid=ImgRaw&r=0" alt="Djembe mask detail">
                         </div>
                     </div>
                     <div class="card-footer">
@@ -519,7 +518,7 @@
                     <div class="article-content">
                         <p>From the intricate adobe structures of the Dogon to the geometric designs on Ndebele homes, this study deciphers the architectural signs and symbols that communicate lineage, social status, and cosmological beliefs. It highlights architecture as a primary text of cultural expression.</p>
                         <div class="image-container">
-                            <img src="https://via.placeholder.com/200x120/FF69B4/FFFFFF?text=Ndebele+House+Painting" alt="Ndebele house painting">
+                            <img src="https://github.com/oeybers-cpu/visual_semiotics/blob/main/1756783844.png?raw=true" alt="Ndebele house painting">
                         </div>
                     </div>
                     <div class="card-footer">
@@ -532,14 +531,14 @@
                     <div class="article-content">
                         <p>This article investigates how African artists are reinterpreting traditional semiotic systems in digital media. It looks at the use of algorithms to generate patterns inspired by traditional art, and the role of digital platforms in disseminating and preserving these cultural symbols.</p>
                         <div class="image-container">
-                            <img src="https://via.placeholder.com/200x120/00FFFF/000000?text=Digital+African+Art" alt="Digital art piece">
+                            <img src="https://github.com/oeybers-cpu/visual_semiotics/blob/main/1756784170.png?raw=true" alt="Digital art piece">
                         </div>
                     </div>
                     <div class="card-footer">
                         Learn about digital semiotics
                     </div>
                 </div>
-                
+
                 <div class="article-card">
                     <h3><i class="fas fa-pen-nib"></i> Scribes and Ancient Semiotics</h3>
                     <div class="article-content">
@@ -579,7 +578,7 @@
             // Back button functionality
             const backButton = document.getElementById('backButton');
             backButton.addEventListener('click', function(event) {
-                event.preventDefault(); // Prevent the default link behavior
+                event.preventDefault();
                 if (window.history.length > 1) {
                     window.history.back();
                 } else {
@@ -587,9 +586,9 @@
                 }
             });
 
-            // Counter animation
+            // Counter animation (placeholder - no counter in HTML)
             const counter = document.querySelector('.counter-wrapper');
-            if(counter) {
+            if (counter) {
                 let target = parseInt(counter.textContent.replace(/,/g, ''));
                 let current = 0;
                 let duration = 2000;

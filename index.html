@@ -26,20 +26,8 @@
             --digital-purple: #cf40ff;
             --royal-blue: #4169E1;
             --royal-blue-light: #6c8eff;
-            --aqua-blue: #00FFFF;
             --card-padding: 15px;
             --card-gap: 25px;
-            --pyramid-neon-color: #00FFFF;
-            --pyramid-base-size: 400px;
-            --pyramid-height: 300px;
-            /* New pyramid colors */
-            --color1: #FF6B6B;
-            --color2: #FFD166;
-            --color3: #06D6A0;
-            --color4: #118AB2;
-            --color5: #EF476F;
-            --color6: #FF9E00;
-            --color7: #073B4C;
         }
         body {
             background: linear-gradient(135deg, var(--darker), var(--dark));
@@ -241,6 +229,7 @@
             transition: all 0.4s ease;
             position: relative;
             overflow: hidden;
+            text-align: center; /* Center text in contact card */
         }
         .contact-card::before {
             content: '';
@@ -267,16 +256,12 @@
             font-size: 1.1rem;
             display: flex;
             align-items: center;
+            justify-content: center;
             gap: 7px;
             font-family: 'Orbitron', sans-serif;
             border: none;
-            text-align: left;
-            width: auto;
             padding-bottom: 0;
             margin-top: 0;
-        }
-        .contact-card h2::after {
-            display: none;
         }
         .contact-card a {
             color: var(--digital-purple);
@@ -408,33 +393,35 @@
             align-items: center;
             justify-content: center;
             margin: 10px 0;
-            min-height: 120px;
+            min-height: 100px;
             background: rgba(10, 10, 15, 0.5);
             border-radius: 8px;
             border: 1px solid rgba(207, 64, 255, 0.2);
             overflow: hidden;
+            padding: 8px;
         }
         .image-container img {
-            width: 75%;
+            width: 45%;
             height: auto;
             object-fit: cover;
             border-radius: 8px;
             transition: all 0.5s ease;
             border: 2px solid transparent;
-            box-shadow: 0 0 10px rgba(207, 64, 255, 0.5), 0 0 20px rgba(207, 64, 255, 0.3), 0 0 30px rgba(207, 64, 255, 0.2), inset 0 0 10px rgba(207, 64, 255, 0.3), inset 0 0 20px rgba(207, 64, 255, 0.2);
-            background: linear-gradient(var(--card-bg), var(--card-bg)) padding-box, linear-gradient(45deg, var(--primary), var(--secondary), var(--accent), var(--digital-purple)) border-box;
-            margin: 5px 0;
+            box-shadow: 
+                0 0 8px rgba(207, 64, 255, 0.4),
+                0 0 16px rgba(207, 64, 255, 0.2),
+                inset 0 0 8px rgba(207, 64, 255, 0.2);
+            background: 
+                linear-gradient(var(--card-bg), var(--card-bg)) padding-box,
+                linear-gradient(45deg, var(--primary), var(--secondary), var(--accent), var(--digital-purple)) border-box;
+            margin: 4px 0;
         }
-        .imhotep-image {
-            width: 45% !important;
-            height: auto !important;
-            max-height: 150px;
-        }
-        .scribe-image-2 {
-            width: 65% !important;
-        }
+        .imhotep-image,
+        .scribe-image-2,
         .ubuntu-image {
-            width: 65% !important;
+            width: 39% !important;
+            max-height: 130px !important;
+            border-radius: 8px;
         }
         @media (max-width: 768px) {
             .articles-container {
@@ -451,11 +438,6 @@
                 flex-direction: column;
                 padding: 10px;
             }
-        }
-        .footer-logo {
-            width: 150px;
-            display: block;
-            margin: 0 auto 10px;
         }
     </style>
 </head>
@@ -518,7 +500,7 @@
                     <div class="article-content">
                         <p>From the intricate adobe structures of the Dogon to the geometric designs on Ndebele homes, this study deciphers the architectural signs and symbols that communicate lineage, social status, and cosmological beliefs. It highlights architecture as a primary text of cultural expression.</p>
                         <div class="image-container">
-                            <img src="https://github.com/oeybers-cpu/visual_semiotics/blob/main/1756783844.png?raw=true" alt="Ndebele house painting">
+                            <img src="https://github.com/oeybers-cpu/visual_semiotics/blob/main/1756783844.png?raw=true" alt="Architectural symbol example">
                         </div>
                     </div>
                     <div class="card-footer">
@@ -531,7 +513,7 @@
                     <div class="article-content">
                         <p>This article investigates how African artists are reinterpreting traditional semiotic systems in digital media. It looks at the use of algorithms to generate patterns inspired by traditional art, and the role of digital platforms in disseminating and preserving these cultural symbols.</p>
                         <div class="image-container">
-                            <img src="https://github.com/oeybers-cpu/visual_semiotics/blob/main/1756784170.png?raw=true" alt="Digital art piece">
+                            <img src="https://github.com/oeybers-cpu/visual_semiotics/blob/main/1756784170.png?raw=true" alt="Digital reinterpretation artwork">
                         </div>
                     </div>
                     <div class="card-footer">
@@ -544,7 +526,6 @@
                     <div class="article-content">
                         <p>This study explores the role of scribes in ancient African societies, focusing on the preservation and communication of knowledge through written symbols. It examines how hieroglyphs in Ancient Egypt and manuscripts from centers like Timbuktu acted as complex semiotic systems, encoding history, philosophy, and science.</p>
                         <div class="image-container">
-                            <img src="https://github.com/oeybers-cpu/visual_semiotics/blob/main/scribe%201.png?raw=true" alt="Ancient African scribes" class="imhotep-image">
                             <img src="https://github.com/oeybers-cpu/visual_semiotics/blob/main/scribe%202.png?raw=true" alt="Ancient African scribes" class="scribe-image-2">
                         </div>
                     </div>
@@ -585,33 +566,6 @@
                     window.location.href = 'https://www.google.com';
                 }
             });
-
-            // Counter animation (placeholder - no counter in HTML)
-            const counter = document.querySelector('.counter-wrapper');
-            if (counter) {
-                let target = parseInt(counter.textContent.replace(/,/g, ''));
-                let current = 0;
-                let duration = 2000;
-                let increment = target / (duration / 16);
-                function updateCounter() {
-                    current += increment;
-                    if (current < target) {
-                        counter.textContent = Math.round(current).toLocaleString();
-                        requestAnimationFrame(updateCounter);
-                    } else {
-                        counter.textContent = target.toLocaleString();
-                    }
-                }
-                const observer = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            updateCounter();
-                            observer.unobserve(entry.target);
-                        }
-                    });
-                }, { threshold: 0.5 });
-                observer.observe(counter);
-            }
         });
     </script>
 </body>

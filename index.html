@@ -1,572 +1,570 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name='LTF_verify' content='4729f595348a5d836a3cb522d6276f3f'/>
-    <title>Visual Semiotics in African Art</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Exo+2:wght@300;400;600&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        :root {
-            --primary: #4fc3f7;
-            --secondary: #29b6f6;
-            --accent: #0288d1;
-            --dark: #0a0a14;
-            --darker: #050508;
-            --light: #f0f0f0;
-            --card-bg: rgba(20, 20, 30, 0.7);
-            --sidebar-width: 280px;
-            --lighter-accent: #81d4fa;
-            --digital-purple: #cf40ff;
-            --royal-blue: #4169E1;
-            --royal-blue-light: #6c8eff;
-            --card-padding: 15px;
-            --card-gap: 25px;
-        }
-        body {
-            background: linear-gradient(135deg, var(--darker), var(--dark));
-            color: var(--light);
-            min-height: 100vh;
-            padding: 20px;
-            position: relative;
-            overflow-x: hidden;
-            font-family: 'Exo 2', sans-serif;
-            line-height: 1.6;
-            display: flex;
-        }
-        body::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background:
-                radial-gradient(circle at 10% 20%, rgba(79, 195, 247, 0.05) 0%, transparent 20%),
-                radial-gradient(circle at 90% 80%, rgba(41, 182, 246, 0.05) 0%, transparent 20%),
-                radial-gradient(circle at 50% 50%, rgba(2, 136, 209, 0.03) 0%, transparent 30%);
-            pointer-events: none;
-            z-index: -2;
-        }
-        .grid-lines {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image:
-                linear-gradient(rgba(79, 195, 247, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(79, 195, 247, 0.03) 1px, transparent 1px);
-            background-size: 40px 40px;
-            pointer-events: none;
-            z-index: -1;
-        }
-        .back-button-tab {
-            margin-top: auto;
-            background: rgba(255, 165, 0, 0.1);
-            border: 1px solid rgba(255, 165, 0, 0.5);
-            color: orange;
-            padding: 10px 20px;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 0 15px rgba(255, 165, 0, 0.3);
-            text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 600;
-        }
-        .back-button-tab:hover {
-            background: rgba(255, 165, 0, 0.2);
-            transform: translateY(-5px);
-            box-shadow: 0 0 25px rgba(255, 165, 0, 0.6), 0 0 40px rgba(255, 165, 0, 0.4);
-            color: var(--light);
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-        }
-        .sidebar {
-            width: var(--sidebar-width);
-            padding: 20px;
-            background: var(--card-bg);
-            border: 1px solid var(--royal-blue);
-            border-radius: 11.25px;
-            margin-right: 30px;
-            backdrop-filter: blur(10px);
-            height: fit-content;
-            position: sticky;
-            top: 20px;
-            box-shadow: 0 0 20px rgba(65, 105, 225, 0.1);
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-        .sidebar-links {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-        .sidebar-link {
-            color: var(--digital-purple);
-            text-decoration: none;
-            padding: 10px 15px;
-            border-radius: 8px;
-            background: rgba(65, 105, 225, 0.1);
-            border: 1px solid var(--royal-blue);
-            transition: all 0.3s ease;
-            font-size: 0.85rem;
-            text-align: center;
-            font-weight: 500;
-            text-shadow: 0 0 5px rgba(207, 64, 255, 0.5);
-        }
-        .sidebar-link:hover {
-            background: rgba(65, 105, 225, 0.2);
-            box-shadow: 0 0 15px rgba(65, 105, 225, 0.6);
-            transform: translateY(-2px);
-            color: var(--light);
-            border-color: var(--royal-blue-light);
-        }
-        .main-content {
-            flex: 1;
-        }
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            position: relative;
-        }
-        header {
-            text-align: center;
-            padding: 8px 0;
-            position: relative;
-            background: linear-gradient(to right, rgba(207, 64, 255, 0.1), transparent);
-            border-bottom: 1px solid rgba(207, 64, 255, 0.3);
-            margin-bottom: 12px;
-            border-radius: 0 0 15px 15px;
-            overflow: hidden;
-        }
-        header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg,
-                transparent,
-                rgba(79, 195, 247, 0.1),
-                rgba(41, 182, 246, 0.1),
-                rgba(207, 64, 255, 0.1),
-                transparent);
-            animation: headerShine 8s infinite linear;
-            z-index: -1;
-        }
-        @keyframes headerShine {
-            0% { left: -100%; }
-            100% { left: 100%; }
-        }
-        h1 {
-            font-size: 2.0rem;
-            margin-bottom: 4px;
-            background: linear-gradient(90deg, var(--primary), var(--digital-purple));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            text-shadow: 0 0 9px rgba(207, 64, 255, 0.6);
-            font-family: 'Orbitron', sans-serif;
-            font-weight: 700;
-            position: relative;
-            display: inline-block;
-            animation: pulseText 3s infinite alternate;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            backface-visibility: hidden;
-            transform: translateZ(0);
-        }
-        @keyframes pulseText {
-            0% { text-shadow: 0 0 9px rgba(207, 64, 255, 0.6); }
-            100% { text-shadow: 0 0 16px rgba(207, 64, 255, 0.8), 0 0 24px rgba(207, 64, 255, 0.6); }
-        }
-        h1::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 10%;
-            width: 80%;
-            height: 1.5px;
-            background: linear-gradient(90deg, transparent, var(--primary), var(--digital-purple), transparent);
-            border-radius: 50%;
-        }
-        .subtitle {
-            font-size: 0.75rem;
-            color: #aaa;
-            max-width: 800px;
-            margin: 6px auto 8px;
-            line-height: 1.5;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            backface-visibility: hidden;
-            transform: translateZ(0);
-        }
-        .contact-card {
-            background: var(--card-bg);
-            border: 1px solid rgba(207, 64, 255, 0.2);
-            border-radius: 11.25px;
-            padding: 10px;
-            max-width: 600px;
-            margin: 12px auto;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 0 18px rgba(207, 64, 255, 0.15);
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
-            text-align: center; /* Center text in contact card */
-        }
-        .contact-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: linear-gradient(90deg, var(--primary), var(--digital-purple));
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.5s ease;
-        }
-        .contact-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 24px rgba(207, 64, 255, 0.3);
-        }
-        .contact-card:hover::before {
-            transform: scaleX(1);
-        }
-        .contact-card h2 {
-            color: var(--digital-purple);
-            margin-bottom: 7px;
-            font-size: 1.1rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 7px;
-            font-family: 'Orbitron', sans-serif;
-            border: none;
-            padding-bottom: 0;
-            margin-top: 0;
-        }
-        .contact-card a {
-            color: var(--digital-purple);
-            text-decoration: none;
-            font-size: 0.75rem;
-            transition: all 0.3s ease;
-            word-break: break-all;
-            display: inline-block;
-            padding: 3px 6px;
-            border-radius: 3px;
-        }
-        .contact-card a:hover {
-            color: var(--lighter-accent);
-            text-shadow: 0 0 9px rgba(207, 64, 255, 0.7);
-            background: rgba(255, 255, 255, 0.1);
-        }
-        .articles-container {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: var(--card-gap);
-            margin: 15px 0;
-        }
-        .article-card {
-            background: var(--card-bg);
-            border: 1px solid rgba(207, 64, 255, 0.2);
-            border-radius: 11.25px;
-            padding: var(--card-padding);
-            transition: all 0.4s ease;
-            backdrop-filter: blur(5px);
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-            box-shadow: 0 5px 15px rgba(207, 64, 255, 0.1);
-        }
-        .article-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: linear-gradient(90deg, var(--primary), var(--digital-purple));
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.5s ease;
-        }
-        .article-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(207, 64, 255, 0.3);
-            border-color: rgba(207, 64, 255, 0.4);
-        }
-        .article-card:hover::before {
-            transform: scaleX(1);
-        }
-        .article-card h3 {
-            color: var(--digital-purple);
-            font-size: 1.1rem;
-            margin-bottom: 10px;
-            line-height: 1.4;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            text-shadow: 0 0 8px rgba(207, 64, 255, 0.8);
-            transition: all 0.3s ease;
-            position: relative;
-            padding-bottom: 8px;
-            margin-top: 0;
-        }
-        .article-card h3::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 40px;
-            height: 2px;
-            background: linear-gradient(90deg, var(--digital-purple), transparent);
-            border-radius: 50%;
-        }
-        .article-card h3 i {
-            font-size: 1.3rem;
-            color: var(--digital-purple);
-        }
-        .article-card:hover h3 {
-            text-shadow: 0 0 12px rgba(207, 64, 255, 1), 0 0 20px rgba(207, 64, 255, 0.6);
-        }
-        .article-content {
-            color: #ddd;
-            font-size: 0.9rem;
-            line-height: 1.6;
-            margin-bottom: 12px;
-            text-shadow: 0 0 4px rgba(255, 255, 255, 0.2);
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-        }
-        .article-content p {
-            margin-bottom: 10px;
-        }
-        .article-content ul {
-            padding-left: 20px;
-            margin-bottom: 10px;
-        }
-        .article-content li {
-            margin-bottom: 6px;
-        }
-        .card-footer {
-            background: rgba(207, 64, 255, 0.08);
-            border-top: 1px solid rgba(207, 64, 255, 0.2);
-            padding: 8px 10px;
-            border-radius: 0 0 8px 8px;
-            font-size: 0.75rem;
-            color: var(--lighter-accent);
-            position: relative;
-            margin-top: auto;
-        }
-        .card-footer::before {
-            content: '»';
-            position: absolute;
-            left: 5px;
-            color: var(--digital-purple);
-            font-weight: bold;
-        }
-        .image-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            margin: 10px 0;
-            min-height: 100px;
-            background: rgba(10, 10, 15, 0.5);
-            border-radius: 8px;
-            border: 1px solid rgba(207, 64, 255, 0.2);
-            overflow: hidden;
-            padding: 8px;
-        }
-        .image-container img {
-            width: 45%;
-            height: auto;
-            object-fit: cover;
-            border-radius: 8px;
-            transition: all 0.5s ease;
-            border: 2px solid transparent;
-            box-shadow: 
-                0 0 8px rgba(207, 64, 255, 0.4),
-                0 0 16px rgba(207, 64, 255, 0.2),
-                inset 0 0 8px rgba(207, 64, 255, 0.2);
-            background: 
-                linear-gradient(var(--card-bg), var(--card-bg)) padding-box,
-                linear-gradient(45deg, var(--primary), var(--secondary), var(--accent), var(--digital-purple)) border-box;
-            margin: 4px 0;
-        }
-        .imhotep-image,
-        .scribe-image-2,
-        .ubuntu-image {
-            width: 39% !important;
-            max-height: 130px !important;
-            border-radius: 8px;
-        }
-        @media (max-width: 768px) {
-            .articles-container {
-                grid-template-columns: 1fr;
-            }
-            .sidebar {
-                width: 100%;
-                margin-right: 0;
-                margin-bottom: 20px;
-                position: relative;
-                top: auto;
-            }
-            body {
-                flex-direction: column;
-                padding: 10px;
-            }
-        }
-    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name='LTF_verify' content='4729f595348a5d836a3cb522d6276f3f'/>
+    <title>Visual Semiotics in African Art</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Exo+2:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        :root {
+            --primary: #4fc3f7;
+            --secondary: #29b6f6;
+            --accent: #0288d1;
+            --dark: #0a0a14;
+            --darker: #050508;
+            --light: #f0f0f0;
+            --card-bg: rgba(20, 20, 30, 0.7);
+            --sidebar-width: 280px;
+            --lighter-accent: #81d4fa;
+            --digital-purple: #cf40ff;
+            --royal-blue: #4169E1;
+            --royal-blue-light: #6c8eff;
+            --card-padding: 15px;
+            --card-gap: 25px;
+        }
+        body {
+            background: linear-gradient(135deg, var(--darker), var(--dark));
+            color: var(--light);
+            min-height: 100vh;
+            padding: 20px;
+            position: relative;
+            overflow-x: hidden;
+            font-family: 'Exo 2', sans-serif;
+            line-height: 1.6;
+            display: flex;
+        }
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background:
+                radial-gradient(circle at 10% 20%, rgba(79, 195, 247, 0.05) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(41, 182, 246, 0.05) 0%, transparent 20%),
+                radial-gradient(circle at 50% 50%, rgba(2, 136, 209, 0.03) 0%, transparent 30%);
+            pointer-events: none;
+            z-index: -2;
+        }
+        .grid-lines {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image:
+                linear-gradient(rgba(79, 195, 247, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(79, 195, 247, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+            pointer-events: none;
+            z-index: -1;
+        }
+        .back-button-tab {
+            margin-top: auto;
+            background: rgba(255, 165, 0, 0.1);
+            border: 1px solid rgba(255, 165, 0, 0.5);
+            color: orange;
+            padding: 10px 20px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 15px rgba(255, 165, 0, 0.3);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        .back-button-tab:hover {
+            background: rgba(255, 165, 0, 0.2);
+            transform: translateY(-5px);
+            box-shadow: 0 0 25px rgba(255, 165, 0, 0.6), 0 0 40px rgba(255, 165, 0, 0.4);
+            color: var(--light);
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+        .sidebar {
+            width: var(--sidebar-width);
+            padding: 20px;
+            background: var(--card-bg);
+            border: 1px solid var(--royal-blue);
+            border-radius: 11.25px;
+            margin-right: 30px;
+            backdrop-filter: blur(10px);
+            height: fit-content;
+            position: sticky;
+            top: 20px;
+            box-shadow: 0 0 20px rgba(65, 105, 225, 0.1);
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .sidebar-links {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .sidebar-link {
+            color: var(--digital-purple);
+            text-decoration: none;
+            padding: 10px 15px;
+            border-radius: 8px;
+            background: rgba(65, 105, 225, 0.1);
+            border: 1px solid var(--royal-blue);
+            transition: all 0.3s ease;
+            font-size: 0.85rem;
+            text-align: center;
+            font-weight: 500;
+            text-shadow: 0 0 5px rgba(207, 64, 255, 0.5);
+        }
+        .sidebar-link:hover {
+            background: rgba(65, 105, 225, 0.2);
+            box-shadow: 0 0 15px rgba(65, 105, 225, 0.6);
+            transform: translateY(-2px);
+            color: var(--light);
+            border-color: var(--royal-blue-light);
+        }
+        .main-content {
+            flex: 1;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+        }
+        header {
+            text-align: center;
+            padding: 8px 0;
+            position: relative;
+            background: linear-gradient(to right, rgba(207, 64, 255, 0.1), transparent);
+            border-bottom: 1px solid rgba(207, 64, 255, 0.3);
+            margin-bottom: 12px;
+            border-radius: 0 0 15px 15px;
+            overflow: hidden;
+        }
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg,
+                transparent,
+                rgba(79, 195, 247, 0.1),
+                rgba(41, 182, 246, 0.1),
+                rgba(207, 64, 255, 0.1),
+                transparent);
+            animation: headerShine 8s infinite linear;
+            z-index: -1;
+        }
+        @keyframes headerShine {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+        h1 {
+            font-size: 2.0rem;
+            margin-bottom: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--digital-purple));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0 0 9px rgba(207, 64, 255, 0.6);
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            position: relative;
+            display: inline-block;
+            animation: pulseText 3s infinite alternate;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            backface-visibility: hidden;
+            transform: translateZ(0);
+        }
+        @keyframes pulseText {
+            0% { text-shadow: 0 0 9px rgba(207, 64, 255, 0.6); }
+            100% { text-shadow: 0 0 16px rgba(207, 64, 255, 0.8), 0 0 24px rgba(207, 64, 255, 0.6); }
+        }
+        h1::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 10%;
+            width: 80%;
+            height: 1.5px;
+            background: linear-gradient(90deg, transparent, var(--primary), var(--digital-purple), transparent);
+            border-radius: 50%;
+        }
+        .subtitle {
+            font-size: 0.75rem;
+            color: #aaa;
+            max-width: 800px;
+            margin: 6px auto 8px;
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            backface-visibility: hidden;
+            transform: translateZ(0);
+        }
+        .contact-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(207, 64, 255, 0.2);
+            border-radius: 11.25px;
+            padding: 10px;
+            max-width: 600px;
+            margin: 12px auto;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 18px rgba(207, 64, 255, 0.15);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            text-align: center; /* Center text in contact card */
+        }
+        .contact-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--digital-purple));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.5s ease;
+        }
+        .contact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 24px rgba(207, 64, 255, 0.3);
+        }
+        .contact-card:hover::before {
+            transform: scaleX(1);
+        }
+        .contact-card h2 {
+            color: var(--digital-purple);
+            margin-bottom: 7px;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 7px;
+            font-family: 'Orbitron', sans-serif;
+            border: none;
+            padding-bottom: 0;
+            margin-top: 0;
+        }
+        .contact-card a {
+            color: var(--digital-purple);
+            text-decoration: none;
+            font-size: 0.75rem;
+            transition: all 0.3s ease;
+            word-break: break-all;
+            display: inline-block;
+            padding: 3px 6px;
+            border-radius: 3px;
+        }
+        .contact-card a:hover {
+            color: var(--lighter-accent);
+            text-shadow: 0 0 9px rgba(207, 64, 255, 0.7);
+            background: rgba(255, 255, 255, 0.1);
+        }
+        .articles-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--card-gap);
+            margin: 15px 0;
+        }
+        .article-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(207, 64, 255, 0.2);
+            border-radius: 11.25px;
+            padding: var(--card-padding);
+            transition: all 0.4s ease;
+            backdrop-filter: blur(5px);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            box-shadow: 0 5px 15px rgba(207, 64, 255, 0.1);
+        }
+        .article-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--digital-purple));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.5s ease;
+        }
+        .article-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(207, 64, 255, 0.3);
+            border-color: rgba(207, 64, 255, 0.4);
+        }
+        .article-card:hover::before {
+            transform: scaleX(1);
+        }
+        .article-card h3 {
+            color: var(--digital-purple);
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            line-height: 1.4;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-shadow: 0 0 8px rgba(207, 64, 255, 0.8);
+            transition: all 0.3s ease;
+            position: relative;
+            padding-bottom: 8px;
+            margin-top: 0;
+        }
+        .article-card h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: linear-gradient(90deg, var(--digital-purple), transparent);
+            border-radius: 50%;
+        }
+        .article-card h3 i {
+            font-size: 1.3rem;
+            color: var(--digital-purple);
+        }
+        .article-card:hover h3 {
+            text-shadow: 0 0 12px rgba(207, 64, 255, 1), 0 0 20px rgba(207, 64, 255, 0.6);
+        }
+        .article-content {
+            color: #ddd;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin-bottom: 12px;
+            text-shadow: 0 0 4px rgba(255, 255, 255, 0.2);
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .article-content p {
+            margin-bottom: 10px;
+        }
+        .article-content ul {
+            padding-left: 20px;
+            margin-bottom: 10px;
+        }
+        .article-content li {
+            margin-bottom: 6px;
+        }
+        .card-footer {
+            background: rgba(207, 64, 255, 0.08);
+            border-top: 1px solid rgba(207, 64, 255, 0.2);
+            padding: 8px 10px;
+            border-radius: 0 0 8px 8px;
+            font-size: 0.75rem;
+            color: var(--lighter-accent);
+            position: relative;
+            margin-top: auto;
+        }
+        .card-footer::before {
+            content: '»';
+            position: absolute;
+            left: 5px;
+            color: var(--digital-purple);
+            font-weight: bold;
+        }
+        .image-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 10px 0;
+            min-height: 100px;
+            background: rgba(10, 10, 15, 0.5);
+            border-radius: 8px;
+            border: 1px solid rgba(207, 64, 255, 0.2);
+            overflow: hidden;
+            padding: 8px;
+        }
+        .image-container img {
+            width: 45%;
+            height: auto;
+            object-fit: cover;
+            border-radius: 8px;
+            transition: all 0.5s ease;
+            border: 2px solid transparent;
+            box-shadow: 
+                0 0 8px rgba(207, 64, 255, 0.4),
+                0 0 16px rgba(207, 64, 255, 0.2),
+                inset 0 0 8px rgba(207, 64, 255, 0.2);
+            background: 
+                linear-gradient(var(--card-bg), var(--card-bg)) padding-box,
+                linear-gradient(45deg, var(--primary), var(--secondary), var(--accent), var(--digital-purple)) border-box;
+            margin: 4px 0;
+        }
+        .imhotep-image,
+        .scribe-image-2,
+        .ubuntu-image {
+            width: 39% !important;
+            max-height: 130px !important;
+            border-radius: 8px;
+        }
+        @media (max-width: 768px) {
+            .articles-container {
+                grid-template-columns: 1fr;
+            }
+            .sidebar {
+                width: 100%;
+                margin-right: 0;
+                margin-bottom: 20px;
+                position: relative;
+                top: auto;
+            }
+            body {
+                flex-direction: column;
+                padding: 10px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <div class="grid-lines"></div>
+    <div class="grid-lines"></div>
 
-    <div class="sidebar">
-        <div class="sidebar-links">
-            <a href="#" class="sidebar-link"><i class="fas fa-file-alt"></i> Research Artifacts</a>
-            <a href="#" class="sidebar-link"><i class="fas fa-microscope"></i> Methodology</a>
-            <a href="#" class="sidebar-link"><i class="fas fa-chalkboard-teacher"></i> Workshops</a>
-            <a href="#" class="sidebar-link"><i class="fas fa-handshake"></i> Collaborators</a>
-        </div>
-        <a href="#" id="backButton" class="back-button-tab"><i class="fas fa-arrow-left"></i> Back</a>
-    </div>
+    <div class="sidebar">
+        <div class="sidebar-links">
+            <a href="https://scholar.google.com/scholar?q=semiotics+pre-colonial+African+art" class="sidebar-link"><i class="fas fa-file-alt"></i> Research Artifacts</a>
+            <a href="https://tandfonline.com/doi/pdf/10.1080/08949460309595101?casa_token=OlW42L7UGWgAAAAA:YPptEAeQkmwYAnK2Es5TfYfVDSJGugMH_VzS29LwwwbCWJRGRUHJ77qSQ2cuiAPKngSPBQFt9DST" class="sidebar-link"><i class="fas fa-microscope"></i> Methodology</a>
+        </div>
+        <a href="#" id="backButton" class="back-button-tab"><i class="fas fa-arrow-left"></i> Back</a>
+    </div>
 
-    <div class="main-content">
-        <div class="container">
-            <header>
-                <h1>Visual Semiotics in African Art</h1>
-                <p class="subtitle">An interdisciplinary project exploring the communicative power of symbols in traditional and contemporary African art forms.</p>
-            </header>
+    <div class="main-content">
+        <div class="container">
+            <header>
+                <h1>Visual Semiotics in African Art</h1>
+                <p class="subtitle">An interdisciplinary project exploring the communicative power of symbols in traditional and contemporary African art forms.</p>
+            </header>
 
-            <div class="contact-card">
-                <h2><i class="fas fa-user-circle"></i> Dr. Oscar Eybers</h2>
-                <p>Lead Researcher, Center for African Art Studies</p>
-                <p><a href="mailto:oscar.eybers@semio.ac.za"><i class="fas fa-envelope"></i> oscar.eybers@semio.ac.za</a></p>
-                <p><a href="tel:+27123456789"><i class="fas fa-phone"></i> +27 12 345 6789</a></p>
-            </div>
+            <div class="contact-card">
+                <h2><i class="fas fa-user-circle"></i> Dr. Oscar Eybers</h2>
+                <p>Lead Researcher, Center for African Art Studies</p>
+                <p><a href="mailto:oscar.eybers@semio.ac.za"><i class="fas fa-envelope"></i> oscar.eybers@semio.ac.za</a></p>
+                <p><a href="tel:+27123456789"><i class="fas fa-phone"></i> +27 12 345 6789</a></p>
+            </div>
 
-            <div class="articles-container">
-                <div class="article-card">
-                    <h3><i class="fas fa-paint-brush"></i> Symbolic Patterns in Textiles</h3>
-                    <div class="article-content">
-                        <p>This article examines the rich, symbolic language of West African kente cloth and Adinkra symbols. It explores how specific colors and geometric patterns convey proverbs, historical narratives, and social values, acting as a form of non-verbal communication within communities.</p>
-                        <div class="image-container">
-                            <img src="https://github.com/oeybers-cpu/visual_semiotics/blob/main/1756783844.png?raw=true" alt="Kente cloth detail">
-                        </div>
-                    </div>
-                    <div class="card-footer">
-                        Read more about symbolic textiles
-                    </div>
-                </div>
+            <div class="articles-container">
+                <div class="article-card">
+                    <h3><i class="fas fa-paint-brush"></i> Symbolic Patterns in Textiles</h3>
+                    <div class="article-content">
+                        <p>This article examines the rich, symbolic language of West African kente cloth and Adinkra symbols. It explores how specific colors and geometric patterns convey proverbs, historical narratives, and social values, acting as a form of non-verbal communication within communities.</p>
+                        <div class="image-container">
+                            <img src="https://github.com/oeybers-cpu/visual_semiotics/blob/main/1756783844.png?raw=true" alt="Kente cloth detail">
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        Read more about symbolic textiles
+                    </div>
+                </div>
 
-                <div class="article-card">
-                    <h3><i class="fas fa-mask"></i> Ritual Masks and Meaning</h3>
-                    <div class="article-content">
-                        <p>Exploring the semiotics of ritual masks, this research analyzes the Djembe masks of the Dan people. It focuses on how form, material, and performance combine to embody ancestral spirits, spiritual forces, or community ideals, making them central to cultural identity and social cohesion.</p>
-                        <div class="image-container">
-                            <img src="https://th.bing.com/th/id/R.a744274293d5e697531f6ac1e8b94e59?rik=T%2boKa1FZK%2flyVA&pid=ImgRaw&r=0" alt="Djembe mask detail">
-                        </div>
-                    </div>
-                    <div class="card-footer">
-                        Explore the symbolism of ritual masks
-                    </div>
-                </div>
+                <div class="article-card">
+                    <h3><i class="fas fa-mask"></i> Ritual Masks and Meaning</h3>
+                    <div class="article-content">
+                        <p>Exploring the semiotics of ritual masks, this research analyzes the Djembe masks of the Dan people. It focuses on how form, material, and performance combine to embody ancestral spirits, spiritual forces, or community ideals, making them central to cultural identity and social cohesion.</p>
+                        <div class="image-container">
+                            <img src="https://th.bing.com/th/id/R.a744274293d5e697531f6ac1e8b94e59?rik=T%2boKa1FZK%2flyVA&pid=ImgRaw&r=0" alt="Djembe mask detail">
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        Explore the symbolism of ritual masks
+                    </div>
+                </div>
 
-                <div class="article-card">
-                    <h3><i class="fas fa-building"></i> Architectural Semiotics</h3>
-                    <div class="article-content">
-                        <p>From the intricate adobe structures of the Dogon to the geometric designs on Ndebele homes, this study deciphers the architectural signs and symbols that communicate lineage, social status, and cosmological beliefs. It highlights architecture as a primary text of cultural expression.</p>
-                        <div class="image-container">
-                            <img src="https://github.com/oeybers-cpu/visual_semiotics/blob/main/1756783844.png?raw=true" alt="Architectural symbol example">
-                        </div>
-                    </div>
-                    <div class="card-footer">
-                        Discover more about architectural symbols
-                    </div>
-                </div>
+                <div class="article-card">
+                    <h3><i class="fas fa-building"></i> Architectural Semiotics</h3>
+                    <div class="article-content">
+                        <p>From the intricate adobe structures of the Dogon to the geometric designs on Ndebele homes, this study deciphers the architectural signs and symbols that communicate lineage, social status, and cosmological beliefs. It highlights architecture as a primary text of cultural expression.</p>
+                        <div class="image-container">
+                            <img src="https://github.com/oeybers-cpu/visual_semiotics/blob/main/1756783844.png?raw=true" alt="Architectural symbol example">
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        Discover more about architectural symbols
+                    </div>
+                </div>
 
-                <div class="article-card">
-                    <h3><i class="fas fa-digital-tachograph"></i> Digital Reinterpretations</h3>
-                    <div class="article-content">
-                        <p>This article investigates how African artists are reinterpreting traditional semiotic systems in digital media. It looks at the use of algorithms to generate patterns inspired by traditional art, and the role of digital platforms in disseminating and preserving these cultural symbols.</p>
-                        <div class="image-container">
-                            <img src="https://github.com/oeybers-cpu/visual_semiotics/blob/main/1756784170.png?raw=true" alt="Digital reinterpretation artwork">
-                        </div>
-                    </div>
-                    <div class="card-footer">
-                        Learn about digital semiotics
-                    </div>
-                </div>
+                <div class="article-card">
+                    <h3><i class="fas fa-digital-tachograph"></i> Digital Reinterpretations</h3>
+                    <div class="article-content">
+                        <p>This article investigates how African artists are reinterpreting traditional semiotic systems in digital media. It looks at the use of algorithms to generate patterns inspired by traditional art, and the role of digital platforms in disseminating and preserving these cultural symbols.</p>
+                        <div class="image-container">
+                            <img src="https://github.com/oeybers-cpu/visual_semiotics/blob/main/1756784170.png?raw=true" alt="Digital reinterpretation artwork">
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        Learn about digital semiotics
+                    </div>
+                </div>
 
-                <div class="article-card">
-                    <h3><i class="fas fa-pen-nib"></i> Scribes and Ancient Semiotics</h3>
-                    <div class="article-content">
-                        <p>This study explores the role of scribes in ancient African societies, focusing on the preservation and communication of knowledge through written symbols. It examines how hieroglyphs in Ancient Egypt and manuscripts from centers like Timbuktu acted as complex semiotic systems, encoding history, philosophy, and science.</p>
-                        <div class="image-container">
-                            <img src="https://github.com/oeybers-cpu/visual_semiotics/blob/main/scribe%202.png?raw=true" alt="Ancient African scribes" class="scribe-image-2">
-                        </div>
-                    </div>
-                    <div class="card-footer">
-                        Read about scribal traditions
-                    </div>
-                </div>
-            </div>
+                <div class="article-card">
+                    <h3><i class="fas fa-pen-nib"></i> Scribes and Ancient Semiotics</h3>
+                    <div class="article-content">
+                        <p>This study explores the role of scribes in ancient African societies, focusing on the preservation and communication of knowledge through written symbols. It examines how hieroglyphs in Ancient Egypt and manuscripts from centers like Timbuktu acted as complex semiotic systems, encoding history, philosophy, and science.</p>
+                        <div class="image-container">
+                            <img src="https://github.com/oeybers-cpu/visual_semiotics/blob/main/scribe%202.png?raw=true" alt="Ancient African scribes" class="scribe-image-2">
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        Read about scribal traditions
+                    </div>
+                </div>
+            </div>
 
-            <div class="contact-card">
-                <p>© 2023 Center for African Art Studies</p>
-                <p>All visual materials used with permission or under fair use for academic purposes</p>
-            </div>
-        </div>
-    </div>
+            <div class="contact-card">
+                <p>© 2023 Center for African Art Studies</p>
+                <p>All visual materials used with permission or under fair use for academic purposes</p>
+            </div>
+        </div>
+    </div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Animate cards on load
-            const cards = document.querySelectorAll('.article-card');
-            cards.forEach((card, index) => {
-                card.style.opacity = '0';
-                card.style.transform = 'translateY(10px)';
-                setTimeout(() => {
-                    card.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
-                    card.style.opacity = '1';
-                    card.style.transform = 'translateY(0)';
-                }, 80 * index);
-            });
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animate cards on load
+            const cards = document.querySelectorAll('.article-card');
+            cards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(10px)';
+                setTimeout(() => {
+                    card.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, 80 * index);
+            });
 
-            // Back button functionality
-            const backButton = document.getElementById('backButton');
-            backButton.addEventListener('click', function(event) {
-                event.preventDefault();
-                if (window.history.length > 1) {
-                    window.history.back();
-                } else {
-                    window.location.href = 'https://www.google.com';
-                }
-            });
-        });
-    </script>
+            // Back button functionality
+            const backButton = document.getElementById('backButton');
+            backButton.addEventListener('click', function(event) {
+                event.preventDefault();
+                if (window.history.length > 1) {
+                    window.history.back();
+                } else {
+                    window.location.href = 'https://www.google.com';
+                }
+            });
+        });
+    </script>
 </body>
 </html>

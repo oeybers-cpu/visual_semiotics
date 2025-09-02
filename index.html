@@ -439,6 +439,31 @@
                 padding: 10px;
             }
         }
+        .triangle {
+            width: 0;
+            height: 0;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-bottom: 10px solid var(--primary);
+            animation: rotateTriangle 3s infinite linear, colorChange 6s infinite alternate;
+            margin-top: 5px;
+        }
+        @keyframes rotateTriangle {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        @keyframes colorChange {
+            0% { border-bottom-color: var(--primary); }
+            25% { border-bottom-color: var(--secondary); }
+            50% { border-bottom-color: var(--accent); }
+            75% { border-bottom-color: var(--digital-purple); }
+            100% { border-bottom-color: var(--royal-blue); }
+        }
+        .research-link {
+            display: block;
+            text-align: center;
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body>
@@ -450,6 +475,10 @@
             <a href="https://tandfonline.com/doi/pdf/10.1080/08949460309595101?casa_token=OlW42L7UGWgAAAAA:YPptEAeQkmwYAnK2Es5TfYfVDSJGugMH_VzS29LwwwbCWJRGRUHJ77qSQ2cuiAPKngSPBQFt9DST" class="sidebar-link"><i class="fas fa-microscope"></i> Methodology</a>
         </div>
         <a href="#" id="backButton" class="back-button-tab"><i class="fas fa-arrow-left"></i> Back</a>
+        <div class="triangle"></div>
+        <div class="research-link">
+            <a href="https://scholar.google.com/citations?user=your-profile-id&hl=en" class="sidebar-link">Research Publications | Dr. Oscar Eybers</a>
+        </div>
     </div>
 
     <div class="main-content">
@@ -461,9 +490,8 @@
 
             <div class="contact-card">
                 <h2><i class="fas fa-user-circle"></i> Dr. Oscar Eybers</h2>
-                <p>Lead Researcher, Center for African Art Studies</p>
+                <p>Lecturer, Unit for Academic Literacy, University of Pretoria</p>
                 <p><a href="mailto:oscar.eybers@semio.ac.za"><i class="fas fa-envelope"></i> oscar.eybers@semio.ac.za</a></p>
-                <p><a href="tel:+27123456789"><i class="fas fa-phone"></i> +27 12 345 6789</a></p>
             </div>
 
             <div class="articles-container">

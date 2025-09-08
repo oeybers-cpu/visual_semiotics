@@ -68,7 +68,6 @@
             z-index: -1;
         }
         .nav-button-tab {
-            margin-top: auto;
             background: rgba(255, 165, 0, 0.1);
             border: 1px solid rgba(255, 165, 0, 0.5);
             color: orange;
@@ -416,6 +415,12 @@
                 linear-gradient(45deg, var(--primary), var(--secondary), var(--accent), var(--digital-purple)) border-box;
             margin: 4px 0;
         }
+        .footer-nav {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+            padding: 15px 0;
+        }
         @media (max-width: 768px) {
             .articles-container {
                 grid-template-columns: 1fr;
@@ -465,7 +470,6 @@
             <a href="  https://scholar.google.com/scholar?q=semiotics+pre-colonial+African+art" class="sidebar-link"><i class="fas fa-file-alt"></i> African semiotics research</a>
         </div>
         <a href="#" id="backButton" class="nav-button-tab"><i class="fas fa-arrow-left"></i> Back</a>
-        <a href="#top" id="topButton" class="nav-button-tab"><i class="fas fa-arrow-up"></i> Top</a>
         <div class="triangle"></div>
     </div>
 
@@ -553,6 +557,13 @@
                 <p>© 2023 Center for African Art Studies</p>
                 <p>All visual materials used with permission or under fair use for academic purposes</p>
             </div>
+
+            <!-- FOOTER NAVIGATION -->
+            <div class="footer-nav">
+                <a href="#top" id="footerTopButton" class="nav-button-tab">
+                    <i class="fas fa-arrow-up"></i> Top
+                </a>
+            </div>
         </div>
     </div>
 
@@ -577,9 +588,9 @@
                 window.history.back();
             });
 
-            // Smooth scroll for "Top" button
-            const topButton = document.getElementById('topButton');
-            topButton.addEventListener('click', function(event) {
+            // Smooth scroll for "Top" button in footer
+            const footerTopButton = document.getElementById('footerTopButton');
+            footerTopButton.addEventListener('click', function(event) {
                 event.preventDefault();
                 document.getElementById('top').scrollIntoView({
                     behavior: 'smooth'
@@ -589,3 +600,4 @@
     </script>
 </body>
 </html>
+

@@ -403,6 +403,7 @@
             width: 100%; /* Uniform width */
             max-height: 150px; /* Uniform maximum height */
             object-fit: cover;
+            object-position: center top; /* Ensures faces/masks are visible */
             border-radius: 8px;
             transition: all 0.5s ease;
             border: 2px solid transparent;
@@ -415,11 +416,13 @@
                 linear-gradient(45deg, var(--primary), var(--secondary), var(--accent), var(--digital-purple)) border-box;
             margin: 4px 0;
         }
-        .footer-nav {
-            display: flex;
-            justify-content: center;
-            margin-top: 30px;
+        .footer-copyright {
+            text-align: center;
+            margin-top: 20px;
             padding: 15px 0;
+            color: var(--lighter-accent);
+            font-size: 0.85rem;
+            border-top: 1px solid rgba(207, 64, 255, 0.2);
         }
         @media (max-width: 768px) {
             .articles-container {
@@ -553,16 +556,9 @@
                 </div>
             </div>
 
-            <div class="contact-card">
-                <p>© 2023 Center for African Art Studies</p>
-                <p>All visual materials used with permission or under fair use for academic purposes</p>
-            </div>
-
-            <!-- FOOTER NAVIGATION -->
-            <div class="footer-nav">
-                <a href="#top" id="footerTopButton" class="nav-button-tab">
-                    <i class="fas fa-arrow-up"></i> Top
-                </a>
+            <!-- FOOTER COPYRIGHT -->
+            <div class="footer-copyright">
+                © 2025 Dr Oscar Eybers
             </div>
         </div>
     </div>
@@ -587,17 +583,8 @@
                 event.preventDefault();
                 window.history.back();
             });
-
-            // Smooth scroll for "Top" button in footer
-            const footerTopButton = document.getElementById('footerTopButton');
-            footerTopButton.addEventListener('click', function(event) {
-                event.preventDefault();
-                document.getElementById('top').scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
         });
     </script>
 </body>
 </html>
-
+This is your final, polished version.

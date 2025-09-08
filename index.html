@@ -67,7 +67,7 @@
             pointer-events: none;
             z-index: -1;
         }
-        .back-button-tab {
+        .nav-button-tab {
             margin-top: auto;
             background: rgba(255, 165, 0, 0.1);
             border: 1px solid rgba(255, 165, 0, 0.5);
@@ -86,7 +86,7 @@
             font-size: 0.9rem;
             font-weight: 600;
         }
-        .back-button-tab:hover {
+        .nav-button-tab:hover {
             background: rgba(255, 165, 0, 0.2);
             transform: translateY(-5px);
             box-shadow: 0 0 25px rgba(255, 165, 0, 0.6), 0 0 40px rgba(255, 165, 0, 0.4);
@@ -295,7 +295,7 @@
             overflow: hidden;
             display: flex;
             flex-direction: column;
-            height: 100%;
+            min-height: 420px; /* Ensures uniform card height */
             box-shadow: 0 5px 15px rgba(207, 64, 255, 0.1);
         }
         .article-card::before {
@@ -393,7 +393,7 @@
             align-items: center;
             justify-content: center;
             margin: 10px 0;
-            min-height: 100px;
+            min-height: 160px;
             background: rgba(10, 10, 15, 0.5);
             border-radius: 8px;
             border: 1px solid rgba(207, 64, 255, 0.2);
@@ -401,8 +401,8 @@
             padding: 8px;
         }
         .image-container img {
-            width: 45%;
-            height: auto;
+            width: 100%; /* Uniform width */
+            max-height: 150px; /* Uniform maximum height */
             object-fit: cover;
             border-radius: 8px;
             transition: all 0.5s ease;
@@ -415,13 +415,6 @@
                 linear-gradient(var(--card-bg), var(--card-bg)) padding-box,
                 linear-gradient(45deg, var(--primary), var(--secondary), var(--accent), var(--digital-purple)) border-box;
             margin: 4px 0;
-        }
-        .imhotep-image,
-        .scribe-image-2,
-        .ubuntu-image {
-            width: 39% !important;
-            max-height: 130px !important;
-            border-radius: 8px;
         }
         @media (max-width: 768px) {
             .articles-container {
@@ -446,7 +439,7 @@
             border-right: 23px solid transparent;
             border-bottom: 47px solid var(--primary);
             animation: rotateTriangle 3s infinite linear, colorChange 6s infinite alternate;
-            margin: 0 auto; /* Centered */
+            margin: 0 auto; /* Centred */
             margin-top: 5px;
             filter: drop-shadow(0 0 10px rgba(135, 206, 250, 0.8));
             box-shadow: 0 0 15px rgba(135, 206, 250, 0.5);
@@ -471,13 +464,14 @@
         <div class="sidebar-links">
             <a href="  https://scholar.google.com/scholar?q=semiotics+pre-colonial+African+art" class="sidebar-link"><i class="fas fa-file-alt"></i> African semiotics research</a>
         </div>
-        <a href="#" id="backButton" class="back-button-tab"><i class="fas fa-arrow-left"></i> Back</a>
+        <a href="#" id="backButton" class="nav-button-tab"><i class="fas fa-arrow-left"></i> Back</a>
+        <a href="#top" id="topButton" class="nav-button-tab"><i class="fas fa-arrow-up"></i> Top</a>
         <div class="triangle"></div>
     </div>
 
     <div class="main-content">
         <div class="container">
-            <header>
+            <header id="top">
                 <h1>Visual Semiotics in African Art</h1>
                 <p class="subtitle">An interdisciplinary project exploring the communicative power of symbols in traditional and contemporary African art forms.</p>
             </header>
@@ -490,22 +484,22 @@
 
             <div class="articles-container">
                 <div class="article-card">
-                    <h3><i class="fas fa-paint-brush"></i> Symbolic Patterns in Textiles</h3>
+                    <h3><i class="fas fa-paint-brush"></i> Foundations of African Semiotics</h3>
                     <div class="article-content">
-                        <p>This article examines the rich, symbolic language of West African kente cloth and Adinkra symbols. It explores how specific colors and geometric patterns convey proverbs, historical narratives, and social values, acting as a form of non-verbal communication within communities.</p>
+                        <p>To understand African visual semiotics, one must first recognise its deep roots in ancient intellectual traditions. Figures like Imhotep, the polymath architect and physician of Egypt's Old Kingdom, exemplify the sophisticated systems of knowledge and symbolic representation that flourished millennia ago.</p>
                         <div class="image-container">
-                            <img src="  https://github.com/oeybers-cpu/visual_semiotics/blob/main/1756783844.png?raw=true" alt="Kente cloth detail">
+                            <img src="  https://github.com/oeybers-cpu/visual_semiotics/blob/main/1756783844.png?raw=true" alt="Ancient Egyptian hieroglyphs and architecture">
                         </div>
                     </div>
                     <div class="card-footer">
-                        Read more about symbolic textiles
+                        Explore ancient foundations
                     </div>
                 </div>
 
                 <div class="article-card">
                     <h3><i class="fas fa-mask"></i> Ritual Masks and Meaning</h3>
                     <div class="article-content">
-                        <p>Exploring the semiotics of ritual masks, this research analyzes the Djembe masks of the Dan people. It focuses on how form, material, and performance combine to embody ancestral spirits, spiritual forces, or community ideals, making them central to cultural identity and social cohesion.</p>
+                        <p>Building on these foundations, ritual masks serve as dynamic semiotic systems. The Djembe masks of the Dan people, for instance, are not mere objects but embodiments of ancestral spirits and community ideals. Their form, material, and performative context combine to create a complex, living language.</p>
                         <div class="image-container">
                             <img src="  https://th.bing.com/th/id/R.a744274293d5e697531f6ac1e8b94e59?rik=T%2boKa1FZK%2flyVA&pid=ImgRaw&r=0" alt="Djembe mask detail">
                         </div>
@@ -518,9 +512,9 @@
                 <div class="article-card">
                     <h3><i class="fas fa-building"></i> Architectural Semiotics</h3>
                     <div class="article-content">
-                        <p>From the intricate adobe structures of the Dogon to the geometric designs on Ndebele homes, this study deciphers the architectural signs and symbols that communicate lineage, social status, and cosmological beliefs. It highlights architecture as a primary text of cultural expression.</p>
+                        <p>This symbolic language extends to the built environment. From the Dogon's adobe structures to the Ndebele's geometrically painted homes, architecture functions as a primary text. These designs communicate lineage, social status, and cosmological beliefs, making space itself a carrier of cultural meaning.</p>
                         <div class="image-container">
-                            <img src="  https://github.com/oeybers-cpu/visual_semiotics/blob/main/1756783844.png?raw=true" alt="Architectural symbol example">
+                            <img src="  https://github.com/oeybers-cpu/visual_semiotics/blob/main/1756783844.png?raw=true" alt="Ndebele house painting">
                         </div>
                     </div>
                     <div class="card-footer">
@@ -531,7 +525,7 @@
                 <div class="article-card">
                     <h3><i class="fas fa-digital-tachograph"></i> Digital Reinterpretations</h3>
                     <div class="article-content">
-                        <p>This article investigates how African artists are reinterpreting traditional semiotic systems in digital media. It looks at the use of algorithms to generate patterns inspired by traditional art, and the role of digital platforms in disseminating and preserving these cultural symbols.</p>
+                        <p>Contemporary African artists are now reinterpreting these traditional systems through digital media. By using algorithms to generate patterns inspired by kente cloth or adinkra symbols, they create a dialogue between ancient semiotics and modern technology, ensuring their continued relevance and evolution.</p>
                         <div class="image-container">
                             <img src="  https://github.com/oeybers-cpu/visual_semiotics/blob/main/1756784170.png?raw=true" alt="Digital reinterpretation artwork">
                         </div>
@@ -542,9 +536,9 @@
                 </div>
 
                 <div class="article-card">
-                    <h3><i class="fas fa-pen-nib"></i> Scribes and Ancient Semiotics</h3>
+                    <h3><i class="fas fa-pen-nib"></i> Scribes and Knowledge Systems</h3>
                     <div class="article-content">
-                        <p>This study explores the role of scribes in ancient African societies, focusing on the preservation and communication of knowledge through written symbols. It examines how hieroglyphs in Ancient Egypt and manuscripts from centers like Timbuktu acted as a complex semiotic system, encoding history, philosophy, and science.</p>
+                        <p>Finally, the role of the scribe underscores the importance of recorded semiotics. In centres like Timbuktu and ancient Egypt, scribes preserved complex knowledge systems through written symbols. Their manuscripts encoded not just history, but philosophy and science, forming an intellectual legacy that continues to inform our understanding today.</p>
                         <div class="image-container">
                             <img src="  https://github.com/oeybers-cpu/visual_semiotics/blob/main/scribe%202.png?raw=true" alt="Ancient African scribes" class="scribe-image-2">
                         </div>
@@ -581,6 +575,15 @@
             backButton.addEventListener('click', function(event) {
                 event.preventDefault();
                 window.history.back();
+            });
+
+            // Smooth scroll for "Top" button
+            const topButton = document.getElementById('topButton');
+            topButton.addEventListener('click', function(event) {
+                event.preventDefault();
+                document.getElementById('top').scrollIntoView({
+                    behavior: 'smooth'
+                });
             });
         });
     </script>
